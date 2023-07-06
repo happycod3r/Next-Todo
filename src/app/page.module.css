@@ -1,0 +1,88 @@
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .tabs button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    font-size: 16px;
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .tabs button:hover {
+    background-color: #ddd;
+  }
+  
+  .tabs button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .form {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .form input[type="text"],
+  .form select {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .form button {
+    padding: 8px 16px;
+    margin-left: 8px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form button:hover {
+    background-color: #45a049;
+  }
+  
+  .list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .list span {
+    margin-right: 5px;
+  }
+  
+  .list button {
+    margin-left: 8px;
+    font-size: 14px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .list button:hover {
+    background-color: #d32f2f;
+  }
+
+  .list button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
