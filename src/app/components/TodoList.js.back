@@ -15,16 +15,12 @@ class TodoList extends React.Component {
   }
 
   addTodo = (text, importance) => {
-    
     const timestamp = new Date().toLocaleString();
-    
     const newTodo = {
       text: text,
       importance: importance,
-      timestamp: timestamp,
-      done: false
+      timestamp: timestamp
     };
-
     this.setState(prevState => ({
       todos: [...prevState.todos, newTodo]
     }));
@@ -58,14 +54,6 @@ class TodoList extends React.Component {
     }
   }
 
-  toggleDone = index => {
-    this.setState(prevState => {
-        const todos = [...prevState.todos];
-        todos[index].done = !todos[index].done;
-        return { todos };
-    });
-  }
-
   render() {
     const { todos, filter } = this.state;
     const filteredTodos = this.filterTodos();
@@ -87,7 +75,6 @@ class TodoList extends React.Component {
               todo={todo}
               deleteTodo={this.deleteTodo}
               rearrangeTodos={this.rearrangeTodos}
-              toggleDone={this.toggleDone}
             />
           ))}
         </ul>
