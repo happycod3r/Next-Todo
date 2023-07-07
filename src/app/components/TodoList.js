@@ -78,7 +78,7 @@ class TodoList extends React.Component {
             />
           ))}
         </ul>
-
+ 
         <form onSubmit={e => {
           e.preventDefault();
           const text = e.target.elements.text.value;
