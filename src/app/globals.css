@@ -1,3 +1,14 @@
+/* #e9ecef */
+/* #1a1a1a */
+/* #212529 */
+/* #495057 */
+/* #6c757d */
+/* #7d8597 */
+/* #90be6d */
+/* #f9c74f */
+/* #f9844a */
+/* #f94144 */
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -39,8 +50,6 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 }
-
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -89,12 +98,13 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+    background-color: #212529;
 }
 
 a {
@@ -108,11 +118,287 @@ a {
   }
 }
 
+/* div */ div #main-container {
 
-.todo-item {
+}
+
+/* button */ #filter-btn-container {
+    background-color: #343a40;
+    height: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    align-content: center;
+    box-shadow: rgb(0, 0, 0) 0px 5px 5px -3px, rgba(0, 0, 0, 0.1) 0px 15px 15px -3px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+/* button */ .filter-btn {
+    background-color: #495057;
+    color: #e9ecef;
+    border: none;
+    border-right: 1px solid #1a1a1a;
+    width: 100px;
+    height: 100%;
+}
+
+/* button */ #filter-all-btn {
+    order: 1;
+}
+
+#filter-all-btn:hover {
+    background-color: #6c757d;
+}
+
+/* button */ #filter-low-btn {
+    order: 2;
+}
+
+#filter-low-btn:hover {
+    background-color: #90be6d;
+    color: #161a1d;
+    font-weight: bold;
+}
+
+/* button */ #filter-medium-btn {
+    order: 3;
+}
+
+#filter-medium-btn:hover {
+    background-color: #f9c74f;
+    color: #161a1d;
+    font-weight: bold;
+}
+
+/* button */ #filter-high-btn {
+    order: 4;
+}
+
+#filter-high-btn:hover {
+    background-color: #f9844a;
+    color: #161a1d;
+    font-weight: bold;
+}
+
+/* button */ #filter-critical-btn {
+    order: 5;
+}
+
+#filter-critical-btn:hover {
+    background-color: #f94144;
+    color: #161a1d;
+    font-weight: bold;
+}
+
+/* button */ #filter-done-btn {
+    order: 6;
+}
+
+#filter-done-btn:hover {
+    background-color: #277da1;
+    color: #161a1d;
+    font-weight: bold;
+}
+
+/* ul */ #todo-list {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    align-content: center;
+}
+
+/************************** TODO LIST ITEM *********************************/
+
+/* li */ .todo-list-item {
+    width: 100vw;
+    height: 44px;
+    padding-left: 20px;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-content: center;
+    align-items: center;
+}
+
+.todo-list-item:hover {
+    background-color: #343a40;
+}
+
+/******************** TODO ITEM CTRLS ********************/
+
+.todo-item-ctrls-container {
+    order: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-content: center;
+    align-items: center;
+    padding: 6px;
+}
+
+.form-btn {
+    height: 100%;
+    width: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* button */ .delete-todo-btn {
+    order: 1;
+}
+
+/* button */ .move-todo-up-btn {
+    order: 2;
+}
+
+/* button */ .move-todo-down-btn {
+    order: 3;
+}
+
+/* input */ .toggle-done-checkbox {
+    order: 4;
+    height: 20px;
+    width: 40px;
+    
+}
+
+/* span */ .importance-lvl {
+    order: 2;
+    background-color: #1a1a1a;
+    height: 100%;
+    width: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* span (todo item text) */ .todo-item {
+    order: 4;
+    text-decoration: none;
+    
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    padding-right: 8px;
+}
+
+/* span (todo item text) */ .done {
+    text-decoration: line-through;
+    color: #7d8597; /*7d8597 #778da9 */
+}
+
+/* remove the strikethrough so you can read the text */ .done:hover {
     text-decoration: none;
 }
 
-.done {
-    text-decoration: line-through;
+.done + span {
+    color: #277da1 !important;
+}
+
+/* span */ .created-time-stamp {
+    order: 3;
+    color: #90be6d;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* span */ .done-time-stamp {
+    order: 5;
+    color: #f94144;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.timestamp-txt {
+    color: #e9ecef;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+/******************** ADD NEW TODO FORM ********************/
+
+/* form */ #new-todo-form {
+    background-color: #343a40;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-content: center;
+    align-items: center;
+    box-shadow: rgb(0, 0, 0) 0px -5px 5px -3px, rgba(0, 0, 0, 0.1) 0px -15px 15px -3px;
+}
+
+/* select */ #importance-selector {
+    order: 1;
+    background-color: #495057;
+    color: #e9ecef;
+    padding-left: 8px;
+    height: 100%;
+}
+
+/* input */ #new-todo-input {
+    order: 2;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 100%;
+}
+
+/* button */ #add-new-todo-btn {
+    order: 3;
+    background-color: #495057;
+    color: #e9ecef;
+    border: none;
+    width: 100px;
+    height: 100%;
+}
+
+#add-new-todo-btn:hover {
+    background-color: #6c757d;
+}
+
+#importance-selector:hover {
+    background-color: #6c757d;
+}
+
+/* option */ .importance-selector-option {
+    color: #e9ecef;
+    width: 100%;
+}
+
+/* option */ #low-importance-option {
+    background-color: #90be6d !important;
+}
+
+/* option */ #medium-importance-option {
+    background-color: #f9c74f;   
+}
+
+/* option */ #high-importance-option {
+    background-color: #f9844a;
+}
+
+/* option */ #critical-importance-option {
+    background-color: #f94144;
+}
+
+.icon {
+    
 }
