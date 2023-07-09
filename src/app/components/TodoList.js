@@ -2,9 +2,10 @@
 
 import React from 'react'; 
 import dynamic from 'next/dynamic';
-import ColorPreview from './ColorPreview.js';
 import Image from 'next/image';
 import addIcon from "./../../../public/ui/add-green.png";
+import ColorPreview from './ColorPreview.js';
+import CurentTime from './CurrentTime.js'
 
 const TodoItem = dynamic(() => import('./TodoItem'), { ssr: false });
 
@@ -132,8 +133,9 @@ class TodoList extends React.Component {
                     </select>
                     <input id='new-todo-input' type="text" name="text" placeholder="Add a new todo item" />
                     <button id='add-new-todo-btn' type="submit">
-                        <Image className='btn-icon' src={addIcon} alt='delete' width={24} height={24} loading='lazy'/>
+                        <Image id='add-new-todo-btn-icon' src={addIcon} alt='delete' width={24} height={24} loading='lazy'/>
                     </button>
+                    <CurentTime />
                 </form>
             </div>
         );

@@ -43,8 +43,8 @@ function ColorPreview() {
     }, []);
 
     return (
-        <div id='select-color-preview'>
-            {}
+        <div id='select-color-preview-container'>
+            <div id='select-color-preview'></div>
         </div>
     );
 }
