@@ -22,8 +22,17 @@ function ColorPreview() {
                 case 'critical':
                     previewDiv.style.backgroundColor = '#f94144';
                 break;
+                case 'idea':
+                    previewDiv.style.backgroundColor = '#ff8fab';
+                break;
+                case 'note':
+                    previewDiv.style.backgroundColor = '#2ec4b6';
+                break;
+                case 'reminder':
+                    previewDiv.style.backgroundColor = '#8ecae6';
+                break;
                 default:
-                    previewDiv.style.backgroundColor = '';
+                    previewDiv.style.backgroundColor = '#8e7dbe';
                 break;
             }
         });
@@ -31,11 +40,11 @@ function ColorPreview() {
         return () => {
             selectElement.removeEventListener('change', handleSelectChange);
         };
-    }, []); // Empty dependency array ensures this effect runs only once after mounting
+    }, []);
 
     return (
         <div id='select-color-preview'>
-            {/* Your JSX/HTML code here */}
+            {}
         </div>
     );
 }

@@ -10,6 +10,9 @@
 /* #f9c74f   - medium importance */
 /* #f9844a   - high importance */
 /* #f94144   - critical importance */
+/* #ff8fab   - ideas */
+/* #2ec4b6   - notes */
+/* #8e7dbe   - reminder */
 
 :root {
   --max-width: 1100px;
@@ -121,12 +124,17 @@ a {
 }
 
 /* div */ div #main-container {
-    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-content: start;
 }
 
 /*************************** TODO LIST ***********************/
 
 /* button */ #filter-btn-container {
+    order: 1;
     background-color: #343a40;
     height: 30px;
     display: flex;
@@ -214,10 +222,40 @@ a {
     font-weight: bold;
 }
 
+/* button */ #filter-idea-btn {
+    order: 7;
+}
+
+#filter-idea-btn:hover {
+    background-color: #ff8fab;
+    color: #161a1d;
+    font-weight: bold;
+}
+
+/* button */ #filter-note-btn {
+    order: 8;
+}
+
+#filter-note-btn:hover {
+    background-color: #2ec4b6;
+    color: #161a1d;
+    font-weight: bold;
+}
+
+/* button */ #filter-reminder-btn {
+    order: 7;
+}
+
+#filter-reminder-btn:hover {
+    background-color: #8e7dbe;
+    color: #161a1d;
+    font-weight: bold;
+}
 
 /************************** TODO LIST *********************************/
 
 /* ul */ #todo-list {
+    order: 2;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -225,7 +263,6 @@ a {
     align-items: center;
     align-content: center;
 }
-
 
 /* li */ .todo-list-item {
     width: 100vw;
@@ -285,14 +322,23 @@ a {
 
 /* button */ .delete-todo-btn {
     order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* button */ .move-todo-up-btn {
     order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* button */ .move-todo-down-btn {
     order: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-icon {
@@ -311,7 +357,7 @@ a {
     order: 2;
     background-color: #1a1a1a;
     height: 100%;
-    width: 76px;
+    width: 82px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -373,6 +419,7 @@ a {
 /******************** ADD NEW TODO FORM ********************/
 
 /* form */ #new-todo-form {
+    order: 3;
     background-color: #343a40;
     height: 30px;
     display: flex;
@@ -427,6 +474,9 @@ a {
     height: 100%;
     transition: background-color .26s ease;
     filter: drop-shadow(0 0 3px #1a1a1a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #add-new-todo-btn:hover {
@@ -458,4 +508,16 @@ a {
 
 /* option */ #critical-importance-option {
     background-color: #f94144;
+}
+
+/* option */ #idea-importance-option {
+    background-color: #ff8fab;
+}
+
+/* option */ #note-importance-option {
+    background-color: #2ec4b6;
+}
+
+/* option */ #reminder-importance-option {
+    background-color: #8e7dbe;
 }

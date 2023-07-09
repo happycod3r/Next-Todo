@@ -3,6 +3,8 @@
 import React from 'react'; 
 import dynamic from 'next/dynamic';
 import ColorPreview from './ColorPreview.js';
+import Image from 'next/image';
+import addIcon from "./../../../public/ui/add-green.png";
 
 const TodoItem = dynamic(() => import('./TodoItem'), { ssr: false });
 
@@ -90,6 +92,9 @@ class TodoList extends React.Component {
                     <button id='filter-high-btn' className='filter-btn' onClick={() => this.updateFilter('high')} disabled={filter === 'high'}>High</button>
                     <button id='filter-critical-btn' className='filter-btn' onClick={() => this.updateFilter('critical')} disabled={filter === 'critical'}>Critical</button>
                     <button id='filter-done-btn' className='filter-btn' onClick={() => this.updateFilter('done')} disable={filter === 'done'}>Done</button>
+                    <button id='filter-idea-btn' className='filter-btn' onClick={() => this.updateFilter('idea')} disable={filter === 'idea'}>Idea</button>  
+                    <button id='filter-note-btn' className='filter-btn' onClick={() => this.updateFilter('note')} disable={filter === 'note'}>Note</button>  
+                    <button id='filter-reminder-btn' className='filter-btn' onClick={() => this.updateFilter('reminder')} disable={filter === 'reminder'}>Reminder</button>  
                 </div>
                 <ul id='todo-list'>
                     {filteredTodos.map((todo, index) => (
@@ -115,15 +120,20 @@ class TodoList extends React.Component {
                 }}>
                     
                     <ColorPreview />
-                    
+
                     <select id='importance-selector' name="importance">
                         <option id='low-importance-option' className='importance-selector-option' value="low">Low</option>
                         <option id='medium-importance-option' className='importance-selector-option' value="medium">Medium</option>
                         <option id='high-importance-option' className='importance-selector-option' value="high">High</option>
                         <option id='critical-importance-option' className='importance-selector-option' value="critical">Critical</option>
+                        <option id='idea-importance-option' className='importance-selector-option' value="idea">Idea</option>
+                        <option id='note-importance-option' className='importance-selector-option' value="note">Note</option>
+                        <option id='reminder-importance-option' className='importance-selector-option' value="reminder">Reminder</option>
                     </select>
                     <input id='new-todo-input' type="text" name="text" placeholder="Add a new todo item" />
-                    <button id='add-new-todo-btn' type="submit">Add</button>
+                    <button id='add-new-todo-btn' type="submit">
+                        <Image className='btn-icon' src={addIcon} alt='delete' width={24} height={24} loading='lazy'/>
+                    </button>
                 </form>
             </div>
         );
