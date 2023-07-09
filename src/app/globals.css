@@ -1,13 +1,15 @@
-/* #e9ecef */
+
+/* #e9ecef   - primary text */
 /* #1a1a1a */
-/* #212529 */
-/* #495057 */
-/* #6c757d */
-/* #7d8597 */
-/* #90be6d */
-/* #f9c74f */
-/* #f9844a */
-/* #f94144 */
+/* #212529   - primary bg */
+/* #adb5bd   -  */
+/* #495057   - secondary bg */
+/* #6c757d   - border */
+/* #7d8597   - btn highlight */
+/* #90be6d   - low importance */
+/* #f9c74f   - medium importance */
+/* #f9844a   - high importance */
+/* #f94144   - critical importance */
 
 :root {
   --max-width: 1100px;
@@ -119,8 +121,10 @@ a {
 }
 
 /* div */ div #main-container {
-
+    
 }
+
+/*************************** TODO LIST ***********************/
 
 /* button */ #filter-btn-container {
     background-color: #343a40;
@@ -132,16 +136,23 @@ a {
     align-items: center;
     align-content: center;
     box-shadow: rgb(0, 0, 0) 0px 5px 5px -3px, rgba(0, 0, 0, 0.1) 0px 15px 15px -3px;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid #6c757d;
 }
 
 /* button */ .filter-btn {
     background-color: #495057;
     color: #e9ecef;
     border: none;
-    border-right: 1px solid #1a1a1a;
+    border-right: 1px solid #6c757d;
     width: 100px;
     height: 100%;
+    transition: background-color .26s ease;
+    filter: drop-shadow(0 0 3px #1a1a1a);
+}
+
+.filter-btn:hover {
+    filter: none;
+    border: 1px inset #1a1a1a;
 }
 
 /* button */ #filter-all-btn {
@@ -150,6 +161,7 @@ a {
 
 #filter-all-btn:hover {
     background-color: #6c757d;
+    
 }
 
 /* button */ #filter-low-btn {
@@ -202,6 +214,9 @@ a {
     font-weight: bold;
 }
 
+
+/************************** TODO LIST *********************************/
+
 /* ul */ #todo-list {
     display: flex;
     flex-wrap: nowrap;
@@ -211,7 +226,6 @@ a {
     align-content: center;
 }
 
-/************************** TODO LIST ITEM *********************************/
 
 /* li */ .todo-list-item {
     width: 100vw;
@@ -224,6 +238,7 @@ a {
     justify-content: left;
     align-content: center;
     align-items: center;
+    transition: background-color .26s ease;
 }
 
 .todo-list-item:hover {
@@ -244,11 +259,28 @@ a {
     padding: 6px;
 }
 
-.form-btn {
+.todo-item-ctrl-btn {
+    background-color: #3a3a3a;
+    border: none;
     height: 100%;
     width: 50px;
     padding-left: 10px;
     padding-right: 10px;
+    filter: drop-shadow(0 0 3px #1a1a1a);
+    transition: filter .26s ease;
+    transition: border .26s ease;
+    transition: background-color .26s ease;
+}
+
+.todo-item-ctrl-btn:not(:last-of-type) {
+    border-right: 1px solid #6c757d;
+}
+
+.todo-item-ctrl-btn:hover {
+    background-color: #6c757d;
+    filter: none;
+    border: 1px inset #1a1a1a;
+    
 }
 
 /* button */ .delete-todo-btn {
@@ -261,6 +293,11 @@ a {
 
 /* button */ .move-todo-down-btn {
     order: 3;
+}
+
+.btn-icon {
+    color: red;
+    
 }
 
 /* input */ .toggle-done-checkbox {
@@ -280,30 +317,7 @@ a {
     justify-content: center;
     padding-left: 8px;
     padding-right: 8px;
-}
-
-/* span (todo item text) */ .todo-item {
-    order: 4;
-    text-decoration: none;
-    
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: 12px;
-    padding-right: 8px;
-}
-
-/* span (todo item text) */ .done {
-    text-decoration: line-through;
-    color: #7d8597; /*7d8597 #778da9 */
-}
-
-/* remove the strikethrough so you can read the text */ .done:hover {
-    text-decoration: none;
-}
-
-.done + span {
-    color: #277da1 !important;
+    border-top: 1px solid #212529;
 }
 
 /* span */ .created-time-stamp {
@@ -313,11 +327,10 @@ a {
     display: flex;
     align-items: center;
     padding-left: 8px;
-    padding-right: 8px;
 }
 
 /* span */ .done-time-stamp {
-    order: 5;
+    order: 4;
     color: #f94144;
     height: 100%;
     display: flex;
@@ -330,6 +343,31 @@ a {
     color: #e9ecef;
     padding-left: 6px;
     padding-right: 6px;
+}
+
+/* span (todo item text) */ .todo-item {
+    order: 5;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    padding-right: 8px;
+    transition: text-decoration .26s ease;
+}
+
+/* span (todo item text) */ .done {
+    text-decoration: line-through;
+    color: #7d8597; /*7d8597 #778da9 */
+    transition: text-decoration .26s ease;
+}
+
+/* remove the strikethrough so you can read the text */ .done:hover {
+    text-decoration: none;
+}
+
+.done + span {
+    color: #277da1 !important;
 }
 
 /******************** ADD NEW TODO FORM ********************/
@@ -346,32 +384,55 @@ a {
     box-shadow: rgb(0, 0, 0) 0px -5px 5px -3px, rgba(0, 0, 0, 0.1) 0px -15px 15px -3px;
 }
 
-/* select */ #importance-selector {
+#select-color-preview {
     order: 1;
+    width: 20px;
+    height: 100%;
+    background-color: #495057;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* select */ #importance-selector {
+    order: 2;
     background-color: #495057;
     color: #e9ecef;
     padding-left: 8px;
     height: 100%;
+    transition: background-color .26s ease;
+    border-radius: none !important;
+    border: none;
 }
 
 /* input */ #new-todo-input {
-    order: 2;
+    order: 3;
     padding-left: 8px;
     padding-right: 8px;
     height: 100%;
+    border-radius: none !important;
+    border: none;
 }
 
 /* button */ #add-new-todo-btn {
-    order: 3;
+    order: 4;
     background-color: #495057;
     color: #e9ecef;
-    border: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid #6c757d;
     width: 100px;
     height: 100%;
+    transition: background-color .26s ease;
+    filter: drop-shadow(0 0 3px #1a1a1a);
 }
 
 #add-new-todo-btn:hover {
     background-color: #6c757d;
+    filter: none;
+    border: 1px inset #1a1a1a;
 }
 
 #importance-selector:hover {
@@ -397,8 +458,4 @@ a {
 
 /* option */ #critical-importance-option {
     background-color: #f94144;
-}
-
-.icon {
-    
 }
