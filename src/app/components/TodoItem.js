@@ -5,6 +5,7 @@ import Image from 'next/image';
 import trashIcon from "../../../public/ui/trash-red (1).png";
 import arrowUpIcon from "../../../public/ui/arrow-up.png";
 import arrowDownIcon from "../../../public/ui/arrow-down.png";
+import Text from '../js/strings'
 
 const TodoItem = ({ index, todo, deleteTodo, rearrangeTodos, toggleDone }) => {
     const { text, importance, timestamp, done, timeFinished } = todo;
@@ -39,9 +40,9 @@ const TodoItem = ({ index, todo, deleteTodo, rearrangeTodos, toggleDone }) => {
             </div>
             
             <span className='created-time-stamp'> 
-                <span className='timestamp-txt'>Created @</span> {timestamp} :
+                <span className='timestamp-txt'>{Text.createdTimeStampTxt}</span> {timestamp} :
                 {done && timeFinished && (
-                    <span className='done-time-stamp'><span className='timestamp-txt'>Finished @</span> {timeFinished}</span>
+                    <span className='done-time-stamp'><span className='timestamp-txt'>{Text.finishedTimeStampTxt}</span> {timeFinished}</span>
                 )}
             </span>
             

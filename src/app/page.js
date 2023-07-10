@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <main className={styles.main}>
             <div id='app-title-container'>
-                <h1 id='app-title'>Next Todo v.1</h1>
+                <h1 id='app-title'>Next Todo</h1>
                 <Image id='app-title-img' 
                     src={checkImg} 
                     alt='move down' 

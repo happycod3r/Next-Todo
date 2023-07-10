@@ -6,6 +6,7 @@ import Image from 'next/image';
 import addIcon from "./../../../public/ui/add-green.png";
 import ColorPreview from './ColorPreview';
 import CurentTime from './CurrentTime'
+import Text from '../js/strings'
 
 const TodoItem = dynamic(() => import('./TodoItem'), { ssr: false });
 
@@ -13,6 +14,8 @@ class TodoList extends React.Component {
     
     constructor(props) {
         super(props);
+
+        this.filters = ['all', 'low', 'medium', 'high', 'critical', 'done', 'idea', 'note', 'reminder'];
 
         this.state = {
             todos: [],
@@ -90,15 +93,15 @@ class TodoList extends React.Component {
         return (
             <div id='main-container'>
                 <div id='filter-btn-container'>
-                    <button id='filter-all-btn' className='filter-btn' onClick={() => this.updateFilter('all')} disabled={filter === 'all'}>All</button>
-                    <button id='filter-low-btn' className='filter-btn' onClick={() => this.updateFilter('low')} disabled={filter === 'low'}>Low</button>
-                    <button id='filter-medium-btn' className='filter-btn' onClick={() => this.updateFilter('medium')} disabled={filter === 'medium'}>Medium</button>
-                    <button id='filter-high-btn' className='filter-btn' onClick={() => this.updateFilter('high')} disabled={filter === 'high'}>High</button>
-                    <button id='filter-critical-btn' className='filter-btn' onClick={() => this.updateFilter('critical')} disabled={filter === 'critical'}>Critical</button>
-                    <button id='filter-done-btn' className='filter-btn' onClick={() => this.updateFilter('done')} disable={filter === 'done'}>Done</button>
-                    <button id='filter-idea-btn' className='filter-btn' onClick={() => this.updateFilter('idea')} disable={filter === 'idea'}>Idea</button>  
-                    <button id='filter-note-btn' className='filter-btn' onClick={() => this.updateFilter('note')} disable={filter === 'note'}>Note</button>  
-                    <button id='filter-reminder-btn' className='filter-btn' onClick={() => this.updateFilter('reminder')} disable={filter === 'reminder'}>Reminder</button>  
+                    <button id='filter-all-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[0])} disabled={filter === this.filters[0]}>{Text.filterAllBtnTxt}</button>
+                    <button id='filter-low-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[1])} disabled={filter === this.filters[1]}>{Text.todoTypeLowTxt}</button>
+                    <button id='filter-medium-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[2])} disabled={filter === this.filters[2]}>{Text.todoTypeMediumTxt}</button>
+                    <button id='filter-high-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[3])} disabled={filter === this.filters[3]}>{Text.todoTypeHighTxt}</button>
+                    <button id='filter-critical-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[4])} disabled={filter === this.filters[4]}>{Text.todoTypeCriticalTxt}</button>
+                    <button id='filter-done-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[5])} disable={filter === this.filters[5]}>{Text.filterDoneBtnTxt}</button>
+                    <button id='filter-idea-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[6])} disable={filter === this.filters[6]}>{Text.todoTypeIdeaTxt}</button>
+                    <button id='filter-note-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[7])} disable={filter === this.filters[7]}>{Text.todoTypeNoteTxt}</button>
+                    <button id='filter-reminder-btn' className='filter-btn' onClick={() => this.updateFilter(this.filters[8])} disable={filter === this.filters[8]}>{Text.todoTypeReminderTxt}</button>  
                 </div>
                 <ul id='todo-list'>
                     {filteredTodos.map((todo, index) => (
@@ -126,20 +129,20 @@ class TodoList extends React.Component {
                     <ColorPreview />
 
                     <select id='importance-selector' title='importance-selector' name="importance">
-                        <option id='low-importance-option' className='importance-selector-option' value="low">Low</option>
-                        <option id='medium-importance-option' className='importance-selector-option' value="medium">Medium</option>
-                        <option id='high-importance-option' className='importance-selector-option' value="high">High</option>
-                        <option id='critical-importance-option' className='importance-selector-option' value="critical">Critical</option>
-                        <option id='idea-importance-option' className='importance-selector-option' value="idea">Idea</option>
-                        <option id='note-importance-option' className='importance-selector-option' value="note">Note</option>
-                        <option id='reminder-importance-option' className='importance-selector-option' value="reminder">Reminder</option>
+                        <option id='low-importance-option' className='importance-selector-option' value={this.filters[1]}>{Text.todoTypeLowTxt}</option>
+                        <option id='medium-importance-option' className='importance-selector-option' value={this.filters[2]}>{Text.todoTypeMediumTxt}</option>
+                        <option id='high-importance-option' className='importance-selector-option' value={this.filters[3]}>{Text.todoTypeHighTxt}</option>
+                        <option id='critical-importance-option' className='importance-selector-option' value={this.filters[4]}>{Text.todoTypeCriticalTxt}</option>
+                        <option id='idea-importance-option' className='importance-selector-option' value={this.filters[6]}>{Text.todoTypeIdeaTxt}</option>
+                        <option id='note-importance-option' className='importance-selector-option' value={this.filters[7]}>{Text.todoTypeNoteTxt}</option>
+                        <option id='reminder-importance-option' className='importance-selector-option' value={this.filters[8]}>{Text.todoTypeReminderTxt}</option>
                     </select>
                     <input id='new-todo-input' type="text" name="text" placeholder="Add a new todo item" />
                     <button id='add-new-todo-btn' type="submit">
                         <Image id='add-new-todo-btn-icon' src={addIcon} alt='delete' width={32} height={32} loading='lazy'/>
                     </button>
                     <div id='todo-count-display-container'>
-                        <p id='todo-count-display'>Items: {todoCount}</p>
+                        <p id='todo-count-display'>{Text.itemCountPrependedTxt} {todoCount}</p>
                     </div>
                     <CurentTime />
                 </form>
