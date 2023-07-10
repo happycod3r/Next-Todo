@@ -3,7 +3,7 @@
 import React from 'react'; 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import addIcon from "./../../../public/ui/add-green.png";
+import addIcon from "./../../../public/ui/add-green.png"
 import ColorPreview from './ColorPreview';
 import CurentTime from './CurrentTime'
 import Text from '../js/strings'
@@ -14,12 +14,10 @@ class TodoList extends React.Component {
     
     constructor(props) {
         super(props);
-
         this.filters = ['all', 'low', 'medium', 'high', 'critical', 'done', 'idea', 'note', 'reminder'];
-
         this.state = {
             todos: [],
-            filter: 'all',
+            filter: this.filters[0],
             todoCount: 0
         };
     }
@@ -64,9 +62,9 @@ class TodoList extends React.Component {
 
     filterTodos = () => {
         const { todos, filter } = this.state;
-        if (filter === 'all') {
+        if (filter === this.filters[0]) {
             return todos;
-        } else if (filter === 'done') {
+        } else if (filter === this.filters[5]) {
             return todos.filter(todo => todo.done);
         } else {
             return todos.filter(todo => todo.importance === filter);
@@ -130,17 +128,25 @@ class TodoList extends React.Component {
 
                     <select id='importance-selector' title='importance-selector' name="importance">
                         <option id='low-importance-option' className='importance-selector-option' value={this.filters[1]}>{Text.todoTypeLowTxt}</option>
+                        
                         <option id='medium-importance-option' className='importance-selector-option' value={this.filters[2]}>{Text.todoTypeMediumTxt}</option>
+                        
                         <option id='high-importance-option' className='importance-selector-option' value={this.filters[3]}>{Text.todoTypeHighTxt}</option>
+                        
                         <option id='critical-importance-option' className='importance-selector-option' value={this.filters[4]}>{Text.todoTypeCriticalTxt}</option>
+                        
                         <option id='idea-importance-option' className='importance-selector-option' value={this.filters[6]}>{Text.todoTypeIdeaTxt}</option>
+                        
                         <option id='note-importance-option' className='importance-selector-option' value={this.filters[7]}>{Text.todoTypeNoteTxt}</option>
+                        
                         <option id='reminder-importance-option' className='importance-selector-option' value={this.filters[8]}>{Text.todoTypeReminderTxt}</option>
                     </select>
+                    
                     <input id='new-todo-input' type="text" name="text" placeholder="Add a new todo item" />
                     <button id='add-new-todo-btn' type="submit">
                         <Image id='add-new-todo-btn-icon' src={addIcon} alt='delete' width={32} height={32} loading='lazy'/>
                     </button>
+
                     <div id='todo-count-display-container'>
                         <p id='todo-count-display'>{Text.itemCountPrependedTxt} {todoCount}</p>
                     </div>

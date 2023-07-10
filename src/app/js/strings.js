@@ -12,7 +12,7 @@ const Text = {
     todoTypeIdeaTxt: "Idea",
     todoTypeNoteTxt: "Note",
     todoTypeReminderTxt: "Reminder",
-    itemCountPrependedTxt: "Items: "
+    itemCountPrependedTxt: "Items: ",
 };
 
 export default Text;
