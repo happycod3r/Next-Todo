@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function ColorPreview() {
+const ColorPreview = () => {
     useEffect(() => {
 
         const selectElement = document.getElementById('importance-selector');
@@ -23,17 +23,17 @@ function ColorPreview() {
                     previewDiv.style.backgroundColor = '#f94144';
                 break;
                 case 'idea':
-                    previewDiv.style.backgroundColor = '#ff8fab';
+                    previewDiv.style.backgroundColor = '#277da1';
                 break;
                 case 'note':
-                    previewDiv.style.backgroundColor = '#2ec4b6';
+                    previewDiv.style.backgroundColor = '#edf2f4';
                 break;
                 case 'reminder':
                     previewDiv.style.backgroundColor = '#8ecae6';
                 break;
                 default:
-                    previewDiv.style.backgroundColor = '#8e7dbe';
-                break;
+                    previewDiv.style.backgroundColor = '#5a189a';
+                break;                              
             }
         });
 

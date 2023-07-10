@@ -11,9 +11,10 @@
 /* #f9c74f   - medium importance */
 /* #f9844a   - high importance */
 /* #f94144   - critical importance */
-/* #ff8fab   - ideas */
-/* #2ec4b6   - notes */
-/* #8e7dbe   - reminder */
+/* #277da1   - ideas */
+/* #edf2f4   - notes */
+/* #5a189a   - reminder */
+/* #7d8597   - todo item done */
 
 :root {
   --max-width: 1100px;
@@ -90,6 +91,8 @@
   }
 }
 
+/************************** GLOBALS *********************************/
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -128,22 +131,82 @@ a {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: start;
-    align-content: start;
+    justify-content: center;
+    align-content: center;
 }
 
-/*************************** TODO LIST ***********************/
+/************************** APP TITLE *********************************/
+
+#app-title-container {  
+    order: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-content: start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #3a3a3a;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+#app-title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    order: 1;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-right: 0;
+    height: 100%;
+    filter: drop-shadow(1px 3px 3px #1a1a1a);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Fira Code', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #edf2f4;
+}
+
+#app-title-img {
+    order: 2;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+#gh-link {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+}
+
+#gh-link:hover {
+    background-color: #6c757d;
+    transition: background-color .26s ease;
+}
+
+#gh-link-img {
+    order: 1;
+}
+
+/*************************** IMPORTANCE FILTERS ***********************/
 
 /* button */ #filter-btn-container {
-    order: 1;
+    order: 2;
     background-color: #343a40;
-    height: 30px;
+    height: 46px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-evenly;
     align-items: center;
-    align-content: center;
+    align-content:space-evenly;
     box-shadow: rgb(0, 0, 0) 0px 5px 5px -3px, rgba(0, 0, 0, 0.1) 0px 15px 15px -3px;
     border-bottom: 1px solid #6c757d;
 }
@@ -153,10 +216,11 @@ a {
     color: #e9ecef;
     border: none;
     border-right: 1px solid #6c757d;
-    width: 100px;
+    width: 100%;
     height: 100%;
     transition: background-color .26s ease;
     filter: drop-shadow(0 0 3px #1a1a1a);
+    font-size: large;
 }
 
 .filter-btn:hover {
@@ -228,7 +292,7 @@ a {
 }
 
 #filter-idea-btn:hover {
-    background-color: #ff8fab;
+    background-color: #277da1;
     color: #161a1d;
     font-weight: bold;
 }
@@ -238,7 +302,7 @@ a {
 }
 
 #filter-note-btn:hover {
-    background-color: #2ec4b6;
+    background-color: #edf2f4;
     color: #161a1d;
     font-weight: bold;
 }
@@ -248,7 +312,7 @@ a {
 }
 
 #filter-reminder-btn:hover {
-    background-color: #8e7dbe;
+    background-color: #5a189a;
     color: #161a1d;
     font-weight: bold;
 }
@@ -256,19 +320,22 @@ a {
 /************************** TODO LIST *********************************/
 
 /* ul */ #todo-list {
-    order: 2;
+    order: 3;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: left;
     align-items: center;
     align-content: center;
+    padding: 0;
+    list-style-type: none;
+
 }
 
 /* li */ .todo-list-item {
     width: 100vw;
-    height: 44px;
-    padding-left: 20px;
+    height: 50px;
+    padding-left: 6px;
     border-bottom: 1px solid #1a1a1a;
     display: flex;
     flex-direction: row;
@@ -277,6 +344,27 @@ a {
     align-content: center;
     align-items: center;
     transition: background-color .26s ease;
+}
+
+.todo-list-item:hover .todo-item-number-container {
+    border: 1px solid #6c757d;
+}
+
+.todo-item-number-container {
+    width: 30px;
+    height: 30px;
+    background-color: #3a3a3a;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.todo-item-number {
+    font-size: small;
 }
 
 .todo-list-item:hover {
@@ -342,15 +430,11 @@ a {
     align-items: center;
 }
 
-.btn-icon {
-    
-}
-
 /* input */ .toggle-done-checkbox {
     order: 4;
-    height: 20px;
-    width: 40px;
-    
+    height: 15px;
+    width: 30px;
+    margin-left: 8px !important;  
 }
 
 /* span */ .importance-lvl {
@@ -364,6 +448,8 @@ a {
     padding-left: 8px;
     padding-right: 8px;
     border-top: 1px solid #212529;
+    font-size:large;
+    font-weight: bold;
 }
 
 /* span */ .created-time-stamp {
@@ -373,6 +459,7 @@ a {
     display: flex;
     align-items: center;
     padding-left: 8px;
+    font-size: large;
 }
 
 /* span */ .done-time-stamp {
@@ -399,7 +486,15 @@ a {
     align-items: center;
     padding-left: 12px;
     padding-right: 8px;
+    font-size: large;
+    font-family: cursive;
     transition: text-decoration .26s ease;
+    transition: font-size .20s ease;
+}
+
+.todo-list-item:hover .todo-item {
+    text-decoration: underline;
+    font-size: larger;
 }
 
 /* span (todo item text) */ .done {
@@ -413,15 +508,15 @@ a {
 }
 
 .done + span {
-    color: #277da1 !important;
+    color: #7d8597 !important;
 }
 
 /******************** ADD NEW TODO FORM ********************/
 
 /* form */ #new-todo-form {
-    order: 3;
+    order: 4;
     background-color: #343a40;
-    height: 30px;
+    height: 46px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -429,25 +524,27 @@ a {
     align-content: center;
     align-items: center;
     box-shadow: rgb(0, 0, 0) 0px -5px 5px -3px, rgba(0, 0, 0, 0.1) 0px -15px 15px -3px;
+    border-bottom: 1px solid #6c757d;
 }
 
 #select-color-preview-container {
     order: 1;
-    width: 30px;
+    width: 46px;
     height: 100%;
-    background-color: #3a3a3a;
+    background-color:#3a3a3a;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    border: 1px inset #6c757d;
 }
 
 #select-color-preview {
     order: 1;
-    width: 15px;
-    height: 15px;
-    background-color: #495057;
+    width: 20px;
+    height: 20px;
+    background-color:#90be6d;  /* #495057 */
     border: 1px inset #6c757d;
 }
 
@@ -459,16 +556,17 @@ a {
     height: 100%;
     transition: background-color .26s ease;
     border-radius: none !important;
-    border: none;
+    font-size: large;
 }
 
 #importance-selector:hover {
     background-color: #6c757d;
 }
 
-/* option */ .importance-selector-option {
+/* option */ select .importance-selector-option {
     color: #e9ecef;
-    width: 100%;
+    font-size:large;
+    padding-inline: 10px;
 }
 
 /* option */ #low-importance-option {
@@ -488,15 +586,15 @@ a {
 }
 
 /* option */ #idea-importance-option {
-    background-color: #ff8fab;
+    background-color: #277da1;
 }
 
 /* option */ #note-importance-option {
-    background-color: #2ec4b6;
+    background-color: #edf2f4;
 }
 
 /* option */ #reminder-importance-option {
-    background-color: #8e7dbe;
+    background-color: #5a189a;
 }
 
 /* input */ #new-todo-input {
@@ -506,6 +604,10 @@ a {
     height: 100%;
     border-radius: none !important;
     border: none;
+    border-left: 1px inset  #6c757d;
+    border-bottom: 1px inset  #6c757d;
+    font-size: large;
+    font-family: cursive;
 }
 
 /* button */ #add-new-todo-btn {
@@ -513,8 +615,9 @@ a {
     background-color: #495057;
     color: #e9ecef;
     border-top: none;
-    border-bottom: none;
+    border-bottom: 1px solid #6c757d;
     border-right: 1px solid #6c757d;
+    border-left: 1px solid #6c757d;
     width: 100px;
     height: 100%;
     transition: background-color .26s ease;
@@ -530,23 +633,33 @@ a {
     border: 1px inset #1a1a1a;
 }
 
-#add-new-todo-btn-icon {
-    
-}
-
-#current-time-display {
+#todo-count-display-container {
     order: 5;
-    width: 150px;
+    width: 140px;
     height: 100%;
     background-color: #3a3a3a;
     border-right: 1px inset #6c757d;
+    border-bottom: 1px inset  #6c757d;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    font-size: large;
 }
 
-#current-time {
-
+#current-time-display {
+    order: 6;
+    width: 140px;
+    height: 100%;
+    background-color: #3a3a3a;
+    border-right: 1px inset #6c757d;
+    border-bottom: 1px inset  #6c757d;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
 }
+

@@ -16,7 +16,8 @@ class TodoList extends React.Component {
 
         this.state = {
             todos: [],
-            filter: 'all'
+            filter: 'all',
+            todoCount: 0
         };
     }
 
@@ -33,13 +34,15 @@ class TodoList extends React.Component {
         };
 
         this.setState(prevState => ({
-            todos: [...prevState.todos, newTodo]
+            todos: [...prevState.todos, newTodo],
+            todoCount: prevState.todoCount + 1
         }));
     }
 
     deleteTodo = index => {
         this.setState(prevState => ({
-            todos: prevState.todos.filter((_, i) => i !== index)
+            todos: prevState.todos.filter((_, i) => i !== index),
+            todoCount: prevState.todoCount -1
         }));
     }
 
@@ -81,7 +84,7 @@ class TodoList extends React.Component {
     }
 
     render() {
-        const { todos, filter } = this.state;
+        const { todos, filter, todoCount } = this.state;
         const filteredTodos = this.filterTodos();
 
         return (
@@ -122,7 +125,7 @@ class TodoList extends React.Component {
                     
                     <ColorPreview />
 
-                    <select id='importance-selector' name="importance">
+                    <select id='importance-selector' title='importance-selector' name="importance">
                         <option id='low-importance-option' className='importance-selector-option' value="low">Low</option>
                         <option id='medium-importance-option' className='importance-selector-option' value="medium">Medium</option>
                         <option id='high-importance-option' className='importance-selector-option' value="high">High</option>
@@ -133,8 +136,11 @@ class TodoList extends React.Component {
                     </select>
                     <input id='new-todo-input' type="text" name="text" placeholder="Add a new todo item" />
                     <button id='add-new-todo-btn' type="submit">
-                        <Image id='add-new-todo-btn-icon' src={addIcon} alt='delete' width={24} height={24} loading='lazy'/>
+                        <Image id='add-new-todo-btn-icon' src={addIcon} alt='delete' width={32} height={32} loading='lazy'/>
                     </button>
+                    <div id='todo-count-display-container'>
+                        <p id='todo-count-display'>Items: {todoCount}</p>
+                    </div>
                     <CurentTime />
                 </form>
             </div>
