@@ -4,8 +4,8 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import addIcon from "./../../../public/ui/add-green.png";
-import ColorPreview from './ColorPreview.js';
-import CurentTime from './CurrentTime.js'
+import ColorPreview from './ColorPreview';
+import CurentTime from './CurrentTime'
 
 const TodoItem = dynamic(() => import('./TodoItem'), { ssr: false });
 

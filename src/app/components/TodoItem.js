@@ -37,10 +37,6 @@ const TodoItem = ({ index, todo, deleteTodo, rearrangeTodos, toggleDone }) => {
                 </button>
                 <input className='toggle-done-checkbox' type="checkbox" checked={done} onChange={() => toggleDone(index)} />
             </div>
-
-            <span className='importance-lvl' style={{ color: importanceColors[importance] }}> 
-                [{importance}]
-            </span>
             
             <span className='created-time-stamp'> 
                 <span className='timestamp-txt'>Created @</span> {timestamp} :
@@ -51,6 +47,10 @@ const TodoItem = ({ index, todo, deleteTodo, rearrangeTodos, toggleDone }) => {
             
             <span className={todoItemClass}>
                 {text}
+            </span>
+            
+            <span className='importance-lvl' style={{ color: importanceColors[importance] }}> 
+                [{importance}]
             </span>
         </li>
     );
