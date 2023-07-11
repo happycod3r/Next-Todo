@@ -5,13 +5,13 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
-}
+}           
 
 model Todo {
-  id         Int      @id @default(autoincrement())
-  type       String
-  content    String
-  createdAt  DateTime @default(now())
-  finishedAt DateTime?
-  finished   Boolean
+    id         Int      @id @default(autoincrement())
+    content    String
+    type       String
+    createdAt  DateTime @default(now())
+    finishedAt DateTime?
+    finished   Boolean
 }

@@ -6,7 +6,7 @@ import trashIcon from "../../../public/ui/trash-red (1).png";
 import arrowUpIcon from "../../../public/ui/arrow-up.png";
 import arrowDownIcon from "../../../public/ui/arrow-down.png";
 import Text from '../js/strings'
-
+ 
 const TodoItem = ({ index, todo, deleteTodo, rearrangeTodos, toggleDone }) => {
     const { text, importance, timestamp, done, timeFinished } = todo;
     const importanceColors = {
@@ -28,13 +28,13 @@ const TodoItem = ({ index, todo, deleteTodo, rearrangeTodos, toggleDone }) => {
         </div>    
         <div className='todo-item-ctrls-container'>
                 <button className='delete-todo-btn todo-item-ctrl-btn' onClick={() => deleteTodo(index)}>
-                    <Image className='btn-icon' src={trashIcon} alt='delete' width={20} height={20} loading='lazy'/>
+                    <Image className='btn-icon' src={trashIcon} alt='delete' width={20} height={20} />
                 </button>
                 <button className='move-todo-up-btn todo-item-ctrl-btn' disabled={index === 0} onClick={() => rearrangeTodos(index, index - 1)}>
-                    <Image className='btn-icon' src={arrowUpIcon} alt='move up' width={20} height={20} loading='lazy'/>
+                    <Image className='btn-icon' src={arrowUpIcon} alt='move up' width={20} height={20} />
                 </button>
                 <button className='move-todo-down-btn todo-item-ctrl-btn' disabled={index === todo.length - 1} onClick={() => rearrangeTodos(index, index + 1)}>
-                    <Image className='btn-icon' src={arrowDownIcon} alt='move down' width={20} height={20} loading='lazy'/>
+                    <Image className='btn-icon' src={arrowDownIcon} alt='move down' width={20} height={20} />
                 </button>
                 <input className='toggle-done-checkbox' type="checkbox" checked={done} onChange={() => toggleDone(index)} />
             </div>

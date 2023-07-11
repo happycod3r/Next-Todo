@@ -5,39 +5,40 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import addIcon from "./../../../public/ui/add-green.png"
 import ColorPreview from './ColorPreview';
-import CurentTime from './CurrentTime'
+import Clock from './Clock'
 import Text from '../js/strings'
 
 const TodoItem = dynamic(() => import('./TodoItem'), { ssr: false });
+const setTodo = dynamic(() => import('@/db'), { ssr: false });
 
 class TodoList extends React.Component {
     
     constructor(props) {
         super(props);
         this.filters = ['all', 'low', 'medium', 'high', 'critical', 'done', 'idea', 'note', 'reminder'];
+
         this.state = {
             todos: [],
-            filter: this.filters[0],
+            filter: this.filters[0], // default filter is 'all'
             todoCount: 0
         };
     }
 
-    addTodo = (text, importance) => {
-    
+    addTodo = async (text, importance) => {
         const timestamp = new Date().toLocaleString();
-    
         const newTodo = {
             text: text,
             importance: importance,
             timestamp: timestamp,
-            done: false,
-            timeFinished: null
+            timeFinished: null,
+            done: false
         };
-
+    
         this.setState(prevState => ({
             todos: [...prevState.todos, newTodo],
             todoCount: prevState.todoCount + 1
         }));
+
     }
 
     deleteTodo = index => {
@@ -114,12 +115,13 @@ class TodoList extends React.Component {
                     ))}
                 </ul>
  
-                <form id='new-todo-form' onSubmit={e => {
+                <form id='new-todo-form' onSubmit={async e => {
                     e.preventDefault();
                     const text = e.target.elements.text.value;
                     const importance = e.target.elements.importance.value;
                     if (text.trim() !== '') {
                         this.addTodo(text, importance);
+
                         e.target.reset();
                     }
                 }}>
@@ -143,14 +145,16 @@ class TodoList extends React.Component {
                     </select>
                     
                     <input id='new-todo-input' type="text" name="text" placeholder="Add a new todo item" />
-                    <button id='add-new-todo-btn' type="submit">
-                        <Image id='add-new-todo-btn-icon' src={addIcon} alt='delete' width={32} height={32} loading='lazy'/>
+                    <button onClick={() => {
+                        
+                    }} id='add-new-todo-btn' type="submit">
+                        <Image id='add-new-todo-btn-icon' src={addIcon} alt='delete' width={32} height={32} />
                     </button>
 
                     <div id='todo-count-display-container'>
                         <p id='todo-count-display'>{Text.itemCountPrependedTxt} {todoCount}</p>
                     </div>
-                    <CurentTime />
+                    <Clock />
                 </form>
             </div>
         );

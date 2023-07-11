@@ -13,11 +13,16 @@ const CurrentTime = () => {
       };
     }, []);
 
-    return (
+    /*return (
         <div id='current-time-display'>
             <p id='current-time'>{currentTime.toLocaleTimeString()}</p>
         </div>
-    );
+    );*/
+    return (
+        <div id='current-time-display'>
+            <p id='current-time'></p>
+        </div>
+    )
 }
 
 export default CurrentTime;
