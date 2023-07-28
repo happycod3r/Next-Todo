@@ -26,6 +26,8 @@ Next-Todo is a simple todo list app built with **Next.js**, **Prisma**, and **SQ
 - See the creation time and finish times of todos.
 - Rearrange todos.
 
+![NextTodo Example](./next-todo-example.gif)
+
 ---
 
 ## [Usage](#usage)
