@@ -2,9 +2,7 @@
 
 ![Next-Todo](./next-todo.png)
 
-> WinGTP is a cross-platform, fully functional, full-featured GUI implementation of the OpenAI API.
-> You need a free OpenAI API key to use WinGTP. If you don't already have 
-> one you can find one at [https://openai.com/](https://openai.com/) 
+> Next-Todo is a todo list app to help you organize large tasks into smaller components. When you can visualize each step prodoctivity increases 10 fold.
 
 - [Next-Todo](#next-todo)
   - [About](#about)
